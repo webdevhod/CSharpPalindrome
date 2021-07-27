@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
+$red:     #dc3545;
+$orange:  #fd7e14;
+
+label {
+  cursor: pointer;
+}
+
+.js {
+  min-height: 500px;
+  &__app {
+    &--highlight {
+      border: .5rem solid rgba($red, .3);
+    }
+  }
+}
+
+
+.stack {
+  &__icon {
+    font-size: 4rem;
+
+    &--html5 {
+      color: #f16524;
+    }
+    &--css3 {
+      color: #2465f1;
+    }
+  
+    &--bootstrap {
+      color: #7709f6;
+    }
+    &--javascript {
+      color: #f5de19;
+    }
+  }
+}
+
+.logo-container {
+  width: 100%;
+}
+
+.app-logo {
+  color: red;
+  background: -webkit-linear-gradient(left, red, $orange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 10rem;
+}
+
+.app-logo-name {
+  display: none;
+}
+
+.fa-ul {
+  .fa-li {
+    color: $red;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .stack {
+    &__icon {
+      font-size: 5rem;
+    }
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+  .logo-container {
+    width: 50%;
+  }
+
+  .app-logo-name {
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+  }
+ }
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
+
+}

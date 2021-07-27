@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
+
+label {
+    cursor: pointer;
+}
+
+.js {
+    min-height: 500px;
+}
+
+.js__app--highlight {
+    border: 0.5rem solid rgba(220, 53, 69, 0.3);
+}
+
+.stack__icon {
+    font-size: 4rem;
+}
+
+.stack__icon--html5 {
+    color: #f16524;
+}
+
+.stack__icon--css3 {
+    color: #2465f1;
+}
+
+.stack__icon--bootstrap {
+    color: #7709f6;
+}
+
+.stack__icon--javascript {
+    color: #f5de19;
+}
+
+.logo-container {
+    width: 100%;
+}
+
+.app-logo {
+    color: red;
+    background: -webkit-linear-gradient(left, red, #fd7e14);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 10rem;
+}
+
+.app-logo-name {
+    display: none;
+}
+
+.fa-ul .fa-li {
+    color: #dc3545;
+}
+
+@media (min-width: 768px) {
+    .stack__icon {
+        font-size: 5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .logo-container {
+        width: 50%;
+    }
+
+    .app-logo-name {
+        display: block;
+        font-family: 'Open Sans', sans-serif;
+    }
+}
