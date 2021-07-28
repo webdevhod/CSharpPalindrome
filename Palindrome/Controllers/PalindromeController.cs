@@ -19,8 +19,7 @@ namespace Palindrome.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Index(TacoCat tacocat)
         {
             string inputWord = tacocat.InputWord;

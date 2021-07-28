@@ -1,0 +1,91 @@
+@{
+  ViewData["Title"] = "Mortgage Calculator";
+}
+
+@model Palindrome.Models.Mortgage
+
+<div class="container">
+  <div class="js p-4">
+    <div class="row row-cols-1 row-cols-lg-2 g-1">
+      <div class="col order-last order-lg-first">
+        <div class="logo-container text-center"><i class="app-logo fas fa-calculator pb-2"></i></div>
+        <h1 class="text-uppercase fw-bold text-danger">Mortgage Calculator</h1>
+        <p class="lead">This Javascript application will calculate the mortgage loan over a given period.)</p>
+        <div class="d-flex mb-4"><button class="btn btn-warning text-uppercase" type="button">TRY IT
+            OUT</button></div>
+        <ul class="fa-ul">
+          <li><span class="fa-li"><i class="fas fa-check-square"></i></span>CSS and Bootstrap Layout</li>
+          <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Javascript Fundamentals</li>
+          <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Javascript Loops</li>
+          <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Javascript Functions</li>
+          <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Javascript DOM manipulation</li>
+          <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Javascript If/Else</li>
+          <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Javascript Boolean Logic</li>
+        </ul>
+        <h5 class="stack mt-4">
+          <div class="d-flex gap-2 gap-md-3 gap-lg-4"><i
+              class="fab fa-html5 stack__icon stack__icon--html5"></i><i
+              class="fab fa-css3-alt stack__icon stack__icon--css3"></i><i
+              class="fab fa-bootstrap stack__icon stack__icon--bootstrap"></i><i
+              class="fab fa-js stack__icon stack__icon--javascript"></i></div>
+        </h5>
+      </div>
+      <div class="col order-first order-lg-last pt-0 pt-lg-4 mb-5 mb-lg-0 px-3 js__app">
+        <form method="post" asp-controller="Mortgage" asp-action="Index">
+          <div class="row row-cols-2 gy-3">
+            <div class="col">
+              <label for="houseValue" class="form-label">House Price $</label>
+              <input type="number" class="form-control" id="houseValue" min="0" asp-for="HousePriceValue" value="@Model.HousePriceValue" step="0.01">
+            </div>
+            <div class="col"><label for="downPaymentRateValue" class="form-label">Down Payment Rate
+                %</label><input type="number" class="form-control d-inline-block" id="downPaymentRateValue"
+                min="0" asp-for="DownPaymentRateValue" value="@Model.DownPaymentRateValue" step="0.01"></div>
+            <div class="col"><label for="interestRateValue" class="form-label">Interest rate %</label><input
+                type="number" class="form-control" id="interestRateValue" min="0" asp-for="InterestRateValue" value="@Model.InterestRateValue" step="0.01">
+                </div>
+            <div class="col"><label for="yearsValue" class="form-label">Years</label><input type="number"
+                class="form-control" id="yearsValue" min="0" asp-for="YearsValue" value="@Model.YearsValue"></div>
+          </div>
+          <div class="options mt-3 d-flex flex-column align-items-end"><button type="submit"
+            class="btn btn-danger border-2 mt-2" id="runButton">Run</button>
+          </div>
+        </form>
+        <div class="mt-4 @(Model.Result.Count() > 0 ? "" : "d-none")" id="results">
+          <h2>Results</h2>
+          <div class="row">
+            <div class="col-12 d-flex justify-content-end">Down Payment: <span id="downPayment">@Model.DownPayment</span></div>
+            <div class="col-12 d-flex justify-content-end">Total Principal: <span id="totalPrincipal">@Model.Principal</span>
+            </div>
+            <div class="col-12 d-flex justify-content-end">Total Interest: <span id="totalInterest">@Model.TotalInterest</span>
+            </div>
+            <div class="col-12 d-flex justify-content-end">Total Cost: <span id="totalCost">@Model.TotalCost</span></div>
+          </div>
+          <hr />
+          <table class="table mt-3">
+            <thead>
+              <tr>
+                <th scope="col">Month</th>
+                <th scope="col">Payment</th>
+                <th scope="col">Principal</th>
+                <th scope="col">Interest</th>
+                <th scope="col">Total Interest</th>
+                <th scope="col">Remaining</th>
+              </tr>
+            </thead>
+            <tbody id="results__tbody">
+              @for(int i = 0; i < Model.Result.Count(); ++i) {
+                <tr>
+                    <td>@(i + 1)</td>
+                  @{List<string> row = Model.Result[i]; }
+                  @for(int j = 0; j < row.Count(); ++j) {
+                    <td>@row[j]</td>
+                  }
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
