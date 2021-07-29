@@ -53,12 +53,12 @@
         <div class="mt-4 @(Model.Result.Count() > 0 ? "" : "d-none")" id="results">
           <h2>Results</h2>
           <div class="row">
-            <div class="col-12 d-flex justify-content-end">Down Payment: <span id="downPayment">@Model.DownPayment</span></div>
-            <div class="col-12 d-flex justify-content-end">Total Principal: <span id="totalPrincipal">@Model.Principal</span>
+            <div class="col-12 d-flex justify-content-end">Down Payment: <span id="downPayment">@Model.DownPayment.ToString("C")</span></div>
+            <div class="col-12 d-flex justify-content-end">Total Principal: <span id="totalPrincipal">@Model.Principal.ToString("C")</span>
             </div>
-            <div class="col-12 d-flex justify-content-end">Total Interest: <span id="totalInterest">@Model.TotalInterest</span>
+            <div class="col-12 d-flex justify-content-end">Total Interest: <span id="totalInterest">@Model.TotalInterest.ToString("C")</span>
             </div>
-            <div class="col-12 d-flex justify-content-end">Total Cost: <span id="totalCost">@Model.TotalCost</span></div>
+            <div class="col-12 d-flex justify-content-end">Total Cost: <span id="totalCost">@Model.TotalCost.ToString("C")</span></div>
           </div>
           <hr />
           <table class="table mt-3">
@@ -73,13 +73,14 @@
               </tr>
             </thead>
             <tbody id="results__tbody">
-              @for(int i = 0; i < Model.Result.Count(); ++i) {
+              @foreach(var row in Model.Result) {
                 <tr>
-                    <td>@(i + 1)</td>
-                  @{List<string> row = Model.Result[i]; }
-                  @for(int j = 0; j < row.Count(); ++j) {
-                    <td>@row[j]</td>
-                  }
+                    <td>@(row.Month)</td>
+                    <td>@(row.Payment.ToString("C"))</td>
+                    <td>@(row.Principal.ToString("C"))</td>
+                    <td>@(row.Interest.ToString("C"))</td>
+                    <td>@(row.TotalInterest.ToString("C"))</td>
+                    <td>@(row.Balance.ToString("C"))</td>
                 </tr>
               }
             </tbody>
